@@ -5,13 +5,6 @@ html {
 }
 
 /* ── Responsive name visibility ── */
-@media (max-width: 512px) {
-  .name-sm-screen { display: block !important; }
-  .nav-bar .name  { display: none; }
-}
-@media (min-width: 513px) {
-  .name-sm-screen { display: none; }
-}
 
 /* ── Glass toggle pill ── */
 #sliding-pill {
@@ -65,13 +58,53 @@ html {
   }
 }
 
+/* ── Profile photo with glassy frame ── */
+.profile-frame {
+  position: relative;
+  aspect-ratio: 3 / 3.7;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 0 0 3px rgba(255, 255, 255, 0.05),
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 2px 8px rgba(0, 0, 0, 0.4);
+  background: #111;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-radius: 20px;
+}
+
+.profile-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      165deg,
+      rgba(255, 255, 255, 0.14) 0%,
+      rgba(255, 255, 255, 0.04) 25%,
+      transparent 55%
+    );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.25),
+    inset 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
 /* ── Tech logo carousel ── */
 .carousel-wrapper {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
- 
+
 .carousel-track {
   display: flex;
   align-items: center;
@@ -79,19 +112,15 @@ html {
   width: max-content;
   animation: scroll-left 32s linear infinite;
 }
- 
-.carousel-track:hover {
-  animation-play-state: paused;
-}
- 
+
 @keyframes scroll-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
- 
+
 .tech-logo-item {
-  margin-top: 4px;
-  margin-bottom: 24px; /* Added margin to make room for the text outside */
+  margin-top: 10px;
+  margin-bottom: 24px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,13 +134,12 @@ html {
   transition: border-color 0.2s, background 0.2s, transform 0.2s;
   cursor: default;
   position: relative;
-  /* overflow: hidden; REMOVED so text can show outside the box */
 }
 
 .tech-logo-item:hover {
   border-color: rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.07);
-  transform: translateY(-3px) scale(1.05); /* Changed to Y for a cleaner lift */
+  transform: translateY(-3px) scale(1.05);
 }
 
 .tech-logo-img {
@@ -122,17 +150,58 @@ html {
 
 .tech-logo-fallback {
   position: absolute;
-  top: 100%; /* Positions it exactly at the bottom of the box */
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 8px; /* Gap between box and text */
-  
+  margin-top: 8px;
   font-size: 11px;
   color: rgba(255, 255, 255, 0.7);
   font-weight: 500;
-  white-space: nowrap; /* Prevents text from wrapping awkwardly */
+  white-space: nowrap;
   text-align: center;
   pointer-events: none;
+}
+
+/* ──────────────────────────────────────
+   Parallax — shared image + attachment
+─────────────────────────────────────── */
+
+/* Content section with parallax behind it — grows with content */
+.parallax-bg {
+  position: relative;
+  background-image: url('https://i0.wp.com/editing.xterraweb.com/wp-content/uploads/2014/10/Parallax-Background-Dark-10.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.parallax-bg2 {
+  position: relative;
+  background-image: url('https://wisynco.com/wp-content/uploads/2014/10/Parallax-Background-Dark-05.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Shared overlay — fades top + bottom into the page color */
+.parallax-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    #0e0e0ee0 0%,
+    rgba(14, 14, 14, 0.72) 12%,
+    rgba(14, 14, 14, 0.72) 88%,
+    #0e0e0ee0 100%
+  );
+  pointer-events: none;
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 24px;
 }
 
 /* ── Signature ── */
