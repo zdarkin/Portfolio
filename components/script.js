@@ -25,10 +25,32 @@ function switchTab(tab) {
   } else {
     sectionWork.classList.add('hidden');
     sectionInfo.classList.remove('hidden');
+
+    // trigger about me animations every time info tab opens
+    requestAnimationFrame(() => {
+      const photo = document.getElementById('about-photo');
+      const bio   = document.getElementById('about-bio');
+      if (photo) photo.classList.add('animate');
+      if (bio)   bio.classList.add('animate');
+    });
   }
 }
 
-window.addEventListener('load', () => switchTab('work'));
+window.addEventListener('load', () => {
+  switchTab('work');
+
+  const loader      = document.getElementById('page-loader');
+  const sectionWork = document.getElementById('section-work');
+  const macWindow   = document.getElementById('mac-window');
+
+  setTimeout(() => {
+    loader.classList.add('hidden-loader');
+    sectionWork.classList.remove('opacity-0');
+    requestAnimationFrame(() => {
+      if (macWindow) macWindow.classList.add('animate');
+    });
+  }, 1200);
+});
 
 function toggleDropdown() {
   const d = document.getElementById('dropdown');

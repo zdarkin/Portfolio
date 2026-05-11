@@ -7,6 +7,17 @@
   <link href="./components/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
+
+<!-- LOADING OVERLAY -->
+<div id="page-loader" class="loader-overlay">
+  <div class="loader-dots">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <p class="loader-text">Just a moment.</p>
+</div>
+
 <body class="bg-[#0e0e0e] min-h-screen font-sans text-white"
   style="background-image: radial-gradient(ellipse 60% 80% at 50% 30%, #2a2a2a 0%, #161616 85%, #0a0a0a 100%)">
 
@@ -65,9 +76,9 @@
   </nav>
 
   <!-- WORK SECTION -->
-  <div id="section-work">
+  <div id="section-work" class="opacity-0">
     <div class="flex justify-center px-5 mt-25">
-      <div class="tv-container rounded-2xl border border-white/10 p-1 tv-frame relative">
+      <div id="mac-window" class="tv-container rounded-2xl border border-white/10 p-1 tv-frame relative slide-in-up">
         <div class="tv-loader" id="tv-loader"></div>
         <div class="success-indicator" id="success-indicator"></div>
         <div class="w-full max-w-4xl border border-white/10 rounded-2xl overflow-hidden"
@@ -116,7 +127,7 @@
             <p class="text-[11px] text-white/40 tracking-[0.12em] uppercase">About Me</p>
           </div>
 
-          <h2 class="text-[clamp(30px,5vw,58px)] font-semibold leading-[1.08] tracking-tight mb-14"
+          <h2 class="text-[clamp(30px,5vw,58px)] font-semibold leading-[1.08] tracking-tight mb-14 slide-in-left"
             style="text-shadow: 0 0 40px rgba(255,255,255,0.35), 0 0 80px rgba(255,255,255,0.15), 0 2px 0 rgba(0,0,0,0.5)">
             I turn real-world problems into<br/>
             clean, functional
@@ -125,12 +136,12 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-[260px_1fr] gap-10 sm:gap-16 items-center">
 
-            <div class="profile-frame">
+            <div class="profile-frame slide-in-left">
               <img src="./assets/profile-pic.png" alt="Radzmer Akalani" class="profile-img" />
-              <div class="profile-sheen"></div>
+              <div class="profile-sheen "></div>
             </div>
 
-            <div class="flex flex-col gap-8">
+            <div id="about-bio" class="flex flex-col gap-7 slide-in-right">
               <div class="pb-8 border-b border-white/8">
                 <p class="text-[13px] font-semibold text-white/85 mb-2">Who I Am.</p>
                 <p class="text-[14px] leading-[1.85] text-white/55">
