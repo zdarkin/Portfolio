@@ -11,7 +11,7 @@ function switchTab(tab) {
   // 1. Move and resize the sliding pill
   if (pill) {
     pill.style.width = activeBtn.offsetWidth + 'px';
-    pill.style.transform = (tab === 'work') ? 'translateX(0)' : `translateX(${btnWork.offsetWidth + 2}px)`;
+    pill.style.transform = (tab === 'info') ? 'translateX(0)' : `translateX(${btnInfo.offsetWidth + 2}px)`;
   }
 
   // 2. Update colors
@@ -37,7 +37,7 @@ function switchTab(tab) {
 }
 
 window.addEventListener('load', () => {
-  switchTab('work');
+  switchTab('info');
 
   const loader      = document.getElementById('page-loader');
   const sectionWork = document.getElementById('section-work');

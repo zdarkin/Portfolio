@@ -8,18 +8,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 </head>
 
-<!-- LOADING OVERLAY -->
-<div id="page-loader" class="loader-overlay">
-  <div class="loader-dots">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <p class="loader-text">Just a moment.</p>
-</div>
-
 <body class="bg-[#0e0e0e] min-h-screen font-sans text-white"
   style="background-image: radial-gradient(ellipse 60% 80% at 50% 30%, #2a2a2a 0%, #161616 85%, #0a0a0a 100%)">
+
+  <!-- LOADING OVERLAY -->
+  <div id="page-loader" class="loader-overlay">
+    <div class="loader-dots">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <p class="loader-text">Just a moment.</p>
+  </div>
 
   <!-- NAVBAR -->
   <nav class="fixed top-0 left-0 w-full z-1000 flex items-center justify-between px-6 py-6 sm:px-12">
@@ -35,13 +35,13 @@
           id="sliding-pill"
           class="absolute top-1 left-1 w-4 h-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/25 transition-all duration-300 ease-in-out shadow-lg"
         ></div>
+        <button id="btn-info" onclick="switchTab('info')"
+          class="relative z-10 px-5 py-1.5 rounded-full text-[13px] text-white transition-colors duration-300 cursor-pointer">
+          Info
+        </button>
         <button id="btn-work" onclick="switchTab('work')"
           class="relative z-10 px-5 py-1.5 rounded-full text-[13px] text-white transition-colors duration-300 cursor-pointer">
           Work
-        </button>
-        <button id="btn-info" onclick="switchTab('info')"
-          class="relative z-10 px-5 py-1.5 rounded-full text-[13px] text-white/45 transition-colors duration-300 cursor-pointer">
-          Info
         </button>
       </div>
     </div>
@@ -76,7 +76,7 @@
   </nav>
 
   <!-- WORK SECTION -->
-  <div id="section-work" class="opacity-0">
+  <div id="section-work" class="opacity-0 hidden">
     <div class="flex justify-center px-5 mt-25">
       <div id="mac-window" class="tv-container rounded-2xl border border-white/10 p-1 tv-frame relative slide-in-up">
         <div class="tv-loader" id="tv-loader"></div>
@@ -111,10 +111,15 @@
         </div>
       </div>
     </div>
+
+  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] block visible">
+  © 2025 Radzmer Akalani. All rights reserved.
+  </footer>
+
   </div>
 
   <!-- INFO SECTION -->
-  <div id="section-info" class="hidden">
+  <div id="section-info">
 
     <!-- ── ABOUT ME — parallax background ── -->
     <div class="parallax-bg">
@@ -143,20 +148,20 @@
 
             <div id="about-bio" class="flex flex-col gap-7 slide-in-right">
               <div class="pb-8 border-b border-white/8">
-                <p class="text-[13px] font-semibold text-white/85 mb-2">Who I Am.</p>
-                <p class="text-[14px] leading-[1.85] text-white/55">
+                <p class="text-2xl font-semibold text-white-100 mb-2">Who I Am.</p>
+                <p class="text-xl leading-[1.85] text-white/80">
                   My name is Mohammad Radzmer Akalani — a second-year BS Information Technology student based in Puerto Princesa, Palawan. I specialize in software development and database architecture.
                 </p>
               </div>
               <div class="pb-8 border-b border-white/8">
-                <p class="text-[13px] font-semibold text-white/85 mb-2">What I've Built.</p>
-                <p class="text-[14px] leading-[1.85] text-white/55">
+                <p class="text-2xl font-semibold text-white-100 mb-2">What I've Built.</p>
+                <p class="text-xl leading-[1.85] text-white/80">
                   Three full systems so far: an attendance monitoring system for a school, a local boarding house management system, and a calculator. I also design clean interfaces in Figma and manage databases with MySQL and MongoDB.
                 </p>
               </div>
               <div>
-                <p class="text-[13px] font-semibold text-white/85 mb-2">Experience.</p>
-                <p class="text-[14px] leading-[1.85] text-white/55">
+                <p class="text-2xl font-semibold text-white-100 mb-2">Experience.</p>
+                <p class="text-xl leading-[1.85] text-white/80">
                   Gained professional experience at Foundever last year. Currently looking for part-time opportunities to keep applying my skills while I finish my degree.
                 </p>
               </div>
@@ -176,7 +181,7 @@
           <p class="text-[11px] text-white/40 tracking-[0.12em] uppercase">Off The Clock</p>
         </div>
 
-        <p class="text-[15px] leading-[1.85] text-white/45 italic max-w-135 border-l border-white/12 pl-5">
+        <p class="text-xl leading-[1.85] text-white/45 italic max-w-135 border-l border-white/12 pl-5">
           When I'm not writing code, I'm probably scrolling for tech updates, hanging out with friends on Discord, playing video games, or dancing to music. Basically the whole IT student experience.
         </p>
 
@@ -369,7 +374,13 @@
       </section>
 
     </div>
+
+  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] block visible">
+  © 2025 Radzmer Akalani. All rights reserved.
+  </footer>
+
   </div>
+
 
   <script src="./components/script.js"></script>
 </body>
