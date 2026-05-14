@@ -1,18 +1,20 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./dist/output.css" rel="stylesheet">
   <link href="./components/style.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+  <title>Zdark Portfolio</title>
 </head>
 
 <body class="bg-[#0e0e0e] min-h-screen font-sans text-white"
   style="background-image: radial-gradient(ellipse 60% 80% at 50% 30%, #2a2a2a 0%, #161616 85%, #0a0a0a 100%)">
 
   <!-- LOADING OVERLAY -->
-  <div id="page-loader" class="loader-overlay">
+  <div id="page-loader" class="loader-overlay" aria-hidden="true">
     <div class="loader-dots">
       <span></span>
       <span></span>
@@ -22,11 +24,11 @@
   </div>
 
   <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 w-full z-1000 flex items-center justify-between px-6 py-6 sm:px-12 slide-in-up">
+  <nav class="fixed top-0 left-0 w-full z-1000 flex items-center justify-between px-6 py-6 sm:px-12 slide-in-up" aria-label="Main Navigation">
 
     <div class="name hidden sm:block">
       <p class="text-white text-xl font-semibold tracking-tight">Radzmer Akalani</p>
-      <p class="text-white/35 text-sm mt-0.5">Full Stack Developer</p>
+      <p class="text-white/60 text-sm mt-0.5">Full Stack Developer</p>
     </div>
 
     <div class="flex flex-col items-center gap-1.5">
@@ -35,11 +37,11 @@
           id="sliding-pill"
           class="absolute top-1 left-1 w-4 h-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/25 transition-all duration-300 ease-in-out shadow-lg"
         ></div>
-        <button id="btn-info" onclick="switchTab('info')"
+        <button id="btn-info" onclick="switchTab('info')" aria-controls="section-info"
           class="relative z-10 px-5 py-1.5 rounded-full text-[13px] text-white transition-colors duration-300 cursor-pointer">
           Info
         </button>
-        <button id="btn-work" onclick="switchTab('work')"
+        <button id="btn-work" onclick="switchTab('work')" aria-controls="section-work"
           class="relative z-10 px-5 py-1.5 rounded-full text-[13px] text-white transition-colors duration-300 cursor-pointer">
           Work
         </button>
@@ -48,371 +50,372 @@
 
     <div class="hidden sm:flex items-center gap-6">
       <a href="https://github.com/zdarkin" target="_blank" rel="noopener noreferrer" class="text-white transition-colors rounded-lg px-3 py-2 hover:text-white hover:bg-white/10 hover:border hover:border-white/20 hover:backdrop-blur-md">
-        GitHub <span class="text-[10px]">↗</span>
+        GitHub <span class="text-[11px]" aria-hidden="true">↗</span>
       </a>
-      <a href="./assets/My Resume.pdf" target="_blank" rel="noopener noreferrer" class="text-white transition-colors rounded-lg px-3 py-2 hover:text-white hover:bg-white/10 hover:border hover:border-white/20 hover:backdrop-blur-md">
-        Resume <span class="text-[10px]">↗</span>
+      <a href="./assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="text-white transition-colors rounded-lg px-3 py-2 hover:text-white hover:bg-white/10 hover:border hover:border-white/20 hover:backdrop-blur-md">
+        Resume <span class="text-[11px]" aria-hidden="true">↗</span>
       </a>
     </div>
 
     <div class="relative sm:hidden">
-      <button onclick="toggleDropdown()"
+      <button onclick="toggleDropdown()" aria-label="Toggle mobile menu" aria-expanded="false"
         class="w-12 h-12 pb-1 rounded-full bg-white/8 border border-white/15 text-white text-2xl flex items-center justify-center backdrop-blur-md hover:bg-white/15 transition-colors">
         @
       </button>
       <div id="dropdown"
         class="hidden absolute right-0 top-[calc(100%+10px)] bg-[rgba(30,30,30,0.85)] backdrop-blur-xl border border-white/12 rounded-2xl p-1.5 min-w-35 flex-col gap-0.5">
         <a href="https://github.com/zdarkin" target="_blank" rel="noopener noreferrer"
-          class="flex items-center justify-between px-3.5 py-2 rounded-lg text-[13px] text-white/75 hover:bg-white/8 hover:text-white transition-colors">
-          GitHub <span class="text-[12px] opacity-50">↗</span>
+          class="flex items-center justify-between px-3.5 py-2 rounded-lg text-[13px] text-white/90 hover:bg-white/8 hover:text-white transition-colors">
+          GitHub <span class="text-[12px] opacity-70" aria-hidden="true">↗</span>
         </a>
-        <a href="./assets/My Resume.pdf" target="_blank" rel="noopener noreferrer"
-          class="flex items-center justify-between px-3.5 py-2 rounded-lg text-[13px] text-white/75 hover:bg-white/8 hover:text-white transition-colors">
-          Resume <span class="text-[12px] opacity-50">↗</span>
+        <a href="./assets/resume.pdf" target="_blank" rel="noopener noreferrer"
+          class="flex items-center justify-between px-3.5 py-2 rounded-lg text-[13px] text-white/90 hover:bg-white/8 hover:text-white transition-colors">
+          Resume <span class="text-[12px] opacity-70" aria-hidden="true">↗</span>
         </a>
       </div>
     </div>
 
   </nav>
 
-  <!-- WORK SECTION -->
-  <div id="section-work" class="opacity-0 hidden slide-in-up">
-    <div class="flex justify-center px-5 mt-25">
-      <div id="mac-window" class="tv-container rounded-2xl border border-white/10 p-1 tv-frame relative">
-        <div class="tv-loader" id="tv-loader"></div>
-        <div class="success-indicator" id="success-indicator"></div>
-        <div class="w-full max-w-4xl border border-white/10 rounded-2xl overflow-hidden"
-          style="box-shadow: 0 0 0 0.5px rgba(0,0,0,0.6), 0 32px 80px rgba(0,0,0,0.6)">
-          <div class="items-center justify-between px-4 py-3 border-b border-black/40 hidden sm:block"
-            style="background: radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0%, rgba(210,210,210,0.15) 100%);">
-            <div class="flex items-center gap-2 p-1.5">
-              <div class="w-3.25 h-3.25 rounded-full bg-[#ff5f57]"></div>
-              <div class="w-3.25 h-3.25 rounded-full bg-[#febc2e]"></div>
-              <div class="w-3.25 h-3.25 rounded-full bg-[#28c840]"></div>
+  <main>
+    <!-- WORK SECTION -->
+    <section id="section-work" class="opacity-0 hidden slide-in-up" aria-label="Work Projects">
+      <div class="flex justify-center px-5 mt-25">
+        <div id="mac-window" class="tv-container rounded-2xl border border-white/10 p-1 tv-frame relative">
+          <div class="tv-loader" id="tv-loader"></div>
+          <div class="success-indicator" id="success-indicator"></div>
+          <div class="w-full max-w-4xl border border-white/10 rounded-2xl overflow-hidden"
+            style="box-shadow: 0 0 0 0.5px rgba(0,0,0,0.6), 0 32px 80px rgba(0,0,0,0.6)">
+            <div class="items-center justify-between px-4 py-3 border-b border-black/40 hidden sm:block"
+              style="background: radial-gradient(circle at center, rgba(255, 255, 255, 0.7) 0%, rgba(210,210,210,0.15) 100%);">
+              <div class="flex items-center gap-2 p-1.5">
+                <div class="w-3.25 h-3.25 rounded-full bg-[#ff5f57]"></div>
+                <div class="w-3.25 h-3.25 rounded-full bg-[#febc2e]"></div>
+                <div class="w-3.25 h-3.25 rounded-full bg-[#28c840]"></div>
+              </div>
             </div>
-          </div>
-          <div class="bg-transparent px-12 pt-14 pb-16 sm:px-12">
-            <div class="flex items-center gap-2">
-            <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 sm:hidden section-dot"></span>
-            <p class="text-white/50 text-sm tracking-tight sm:hidden">Radzmer Akalani - Software Developer</p>
+            <div class="bg-transparent px-12 pt-14 pb-16 sm:px-12">
+              <div class="flex items-center gap-2">
+                <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 sm:hidden section-dot"></span>
+                <p class="text-white/70 text-sm tracking-tight sm:hidden">Radzmer Akalani Software Developer</p>
+              </div>
+              <h1 class="text-[clamp(36px,6vw,68px)] font-semibold leading-[1.05] tracking-[-0.02em] mb-6"
+                style="text-shadow: 0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.15)">
+                I Architect Databases and
+                Build Functional
+                <span class="font-serif italic font-normal text-white/70">Software.</span>
+              </h1>
+              <div class="sm:ml-auto sm:max-w-60 text-[14px] leading-relaxed">
+                <p class="text-white/90">Turning Logic into Applications.</p>
+                <p class="text-white/70">Specializes in Web Development.</p>
+              </div>
+              <div class="bouncingArrow cursor-default" aria-hidden="true">↓</div>
             </div>
-            <h1 class="text-[clamp(36px,6vw,68px)] font-semibold leading-[1.05] tracking-[-0.02em] mb-6"
-              style="text-shadow: 0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.15)">
-              I Architect Databases and
-              Build Functional
-              <span class="font-serif italic font-normal text-white/55">Software.</span>
-            </h1>
-            <div class="sm:ml-auto sm:max-w-60 text-[14px] leading-relaxed">
-              <p class="text-white/80">Turning Logic into Applications.</p>
-              <p class="text-white/50">Specializes in Web Development.</p>
-            </div>
-            <div class="bouncingArrow cursor-default">↓</div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <!-- PROJECT CARDS -->
-    <div class="max-w-240 mx-auto px-6 sm:px-12 pb-10 mt-10 flex flex-col gap-4">
 
-      <!-- Card 1 -->
-      <a href="https://github.com/zdarkin/Basic-Calculator" class="project-card group">
-        <div class="flex items-start justify-between mb-3">
-          <div>
-            <p class="text-white text-[17px] font-semibold tracking-tight">Basic Calculator</p>
-            <p class="text-white/40 text-[13px] mt-1">HTU, '26 — A clean, functional calculator supporting basic arithmetic operations with a minimal dark interface.</p>
-          </div>
-          <span class="project-arrow">→</span>
-        </div>
-        <div class="project-preview">
-          <img src="./assets/calculator-preview.png" alt="Basic Calculator" class="w-full h-full object-cover object-top rounded-xl" />
-        </div>
-      </a>
+      <!-- PROJECT CARDS -->
+      <div class="max-w-240 mx-auto px-6 sm:px-12 pb-10 mt-10 flex flex-col gap-4">
 
-      <!-- Card 2 -->
-      <a href="https://github.com/radz360/AttendanceMonitoringSystem" class="project-card group">
-        <div class="flex items-start justify-between mb-3">
-          <div>
-            <p class="text-white text-[17px] font-semibold tracking-tight">Attendance Monitoring System</p>
-            <p class="text-white/40 text-[13px] mt-1">HTU, '25 — A web-based system for streamlining student attendance tracking, with event-based records and printable reports.</p>
-          </div>
-          <span class="project-arrow">→</span>
-        </div>
-        <div class="project-preview">
-          <img src="./assets/attendance-preview.png" alt="Attendance Monitoring System" class="w-full h-full object-cover object-top rounded-xl" />
-        </div>
-      </a>
-
-    </div>
-  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] cursor-default">
-  © 2025 Radzmer Akalani. All rights reserved.
-  </footer>
-
-  </div>
-
-  <!-- INFO SECTION -->
-  <div id="section-info">
-
-    <!-- ── ABOUT ME — parallax background ── -->
-    <div class="parallax-bg">
-      <div class="parallax-overlay"></div>
-      <div class="max-w-240 mx-auto px-6 sm:px-12 py-24 relative z-10">
-        <section>
-
-          <div class="flex items-center gap-2.5 mb-5 slide-in-left">
-            <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
-            <p class="text-[11px] text-white/40 tracking-[0.12em] uppercase">About Me</p>
-          </div>
-
-          <h2 class="text-[clamp(30px,5vw,58px)] font-semibold leading-[1.08] tracking-tight mb-14 slide-in-left"
-            style="text-shadow: 0 0 40px rgba(255,255,255,0.35), 0 0 80px rgba(255,255,255,0.15), 0 2px 0 rgba(0,0,0,0.5)">
-            I turn real-world problems into<br/>
-            clean, functional
-            <span class="font-serif italic font-normal text-white/50">digital systems.</span>
-          </h2>
-
-          <div class="grid grid-cols-1 sm:grid-cols-[260px_1fr] gap-10 sm:gap-16 items-center">
-
-            <div class="profile-frame slide-in-left">
-              <img src="./assets/profile-pic.png" alt="Radzmer Akalani" class="profile-img" />
-              <div class="profile-sheen "></div>
+        <!-- Card 1 -->
+        <a href="https://github.com/zdarkin/Basic-Calculator" class="project-card group">
+          <div class="flex items-start justify-between mb-3">
+            <div>
+              <h2 class="text-white text-[17px] font-semibold tracking-tight">Basic Calculator</h2>
+              <p class="text-white/70 text-[13px] mt-1">HTU, '26 A clean, functional calculator supporting basic arithmetic operations with a minimal dark interface.</p>
             </div>
-
-            <div id="about-bio" class="flex flex-col gap-7 slide-in-right">
-              <div class="pb-8 border-b border-white/8">
-                <p class="text-2xl font-semibold text-white-100 mb-2">Who I Am.</p>
-                <p class="text-xl leading-[1.85] text-white/80">
-                  My name is Mohammad Radzmer Akalani — a second-year BS Information Technology student based in Puerto Princesa, Palawan. I specialize in software development and database architecture.
-                </p>
-              </div>
-              <div class="pb-8 border-b border-white/8">
-                <p class="text-2xl font-semibold text-white-100 mb-2">What I've Built.</p>
-                <p class="text-xl leading-[1.85] text-white/80">
-                  Three full systems so far: an attendance monitoring system for a school, a local boarding house management system, and a calculator. I also design clean interfaces in Figma and manage databases with MySQL and MongoDB.
-                </p>
-              </div>
-              <div>
-                <p class="text-2xl font-semibold text-white-100 mb-2">Experience.</p>
-                <p class="text-xl leading-[1.85] text-white/80">
-                  Gained professional experience at Foundever last year. Currently looking for part-time opportunities to keep applying my skills while I finish my degree.
-                </p>
-              </div>
-            </div>
-
+            <span class="project-arrow" aria-hidden="true">→</span>
           </div>
-        </section>
+          <div class="project-preview">
+            <img src="./assets/calculator-preview.png" alt="Preview of the basic calculator application interface" class="w-full h-full object-cover object-top rounded-xl">
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="https://github.com/radz360/AttendanceMonitoringSystem" class="project-card group">
+          <div class="flex items-start justify-between mb-3">
+            <div>
+              <h2 class="text-white text-[17px] font-semibold tracking-tight">Attendance Monitoring System</h2>
+              <p class="text-white/70 text-[13px] mt-1">HTU, '25 A web based system for streamlining student attendance tracking, with event based records and printable reports.</p>
+            </div>
+            <span class="project-arrow" aria-hidden="true">→</span>
+          </div>
+          <div class="project-preview">
+            <img src="./assets/attendance-preview.png" alt="Preview of the attendance monitoring system dashboard" class="w-full h-full object-cover object-top rounded-xl">
+          </div>
+        </a>
+
       </div>
-    </div>
 
-        <!-- ── OFF THE CLOCK ── -->
-    <div class="max-w-240 mx-auto px-6 sm:px-12 pt-20 pb-20">
-      <section>
+      <footer class="w-full text-center py-6 text-[11px] text-white/60 tracking-[0.06em] cursor-default">
+        © 2025 Radzmer Akalani. All rights reserved.
+      </footer>
 
-        <div class="flex items-center gap-2.5 mb-5">
-          <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
-          <p class="text-[11px] text-white/40 tracking-[0.12em] uppercase">Off The Clock</p>
+    </section>
+
+    <!-- INFO SECTION -->
+    <section id="section-info" aria-label="Personal Information">
+
+      <!-- ABOUT ME parallax background -->
+      <div class="parallax-bg">
+        <div class="parallax-overlay"></div>
+        <div class="max-w-240 mx-auto px-6 sm:px-12 py-24 relative z-10">
+
+          <div>
+
+            <div class="flex items-center gap-2.5 mb-5 slide-in-left">
+              <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
+              <p class="text-[11px] text-white/60 tracking-[0.12em] uppercase">About Me</p>
+            </div>
+
+            <h2 class="text-[clamp(30px,5vw,58px)] font-semibold leading-[1.08] tracking-tight mb-14 slide-in-left"
+              style="text-shadow: 0 0 40px rgba(255,255,255,0.35), 0 0 80px rgba(255,255,255,0.15), 0 2px 0 rgba(0,0,0,0.5)">
+              I turn real world problems into<br>
+              clean, functional
+              <span class="font-serif italic font-normal text-white/70">digital systems.</span>
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-[260px_1fr] gap-10 sm:gap-16 items-center">
+
+              <div class="profile-frame slide-in-left">
+                <img src="./assets/profile-pic.png" alt="Portrait of Radzmer Akalani" class="profile-img">
+                <div class="profile-sheen"></div>
+              </div>
+
+              <div id="about-bio" class="flex flex-col gap-7 slide-in-right">
+                <div class="pb-8 border-b border-white/10">
+                  <h3 class="text-2xl font-semibold text-white mb-2">Who I Am.</h3>
+                  <p class="text-xl leading-[1.85] text-white/90">
+                    My name is Mohammad Radzmer Akalani a second year BS Information Technology student based in Puerto Princesa, Palawan. I specialize in software development and database architecture.
+                  </p>
+                </div>
+                <div class="pb-8 border-b border-white/10">
+                  <h3 class="text-2xl font-semibold text-white mb-2">What I've Built.</h3>
+                  <p class="text-xl leading-[1.85] text-white/90">
+                    Three full systems so far an attendance monitoring system for a school, a local boarding house management system, and a calculator. I also design clean interfaces in Figma and manage databases with MySQL and MongoDB.
+                  </p>
+                </div>
+                <div>
+                  <h3 class="text-2xl font-semibold text-white mb-2">Experience.</h3>
+                  <p class="text-xl leading-[1.85] text-white/90">
+                    Gained professional experience at Foundever last year. Currently looking for part time opportunities to keep applying my skills while I finish my degree.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
+      </div>
 
-        <p class="text-xl leading-[1.85] text-white/45 italic max-w-135 border-l border-white/12 pl-5">
-          When I'm not writing code, I'm probably scrolling for tech updates, hanging out with friends on Discord, playing video games, or dancing to music. Basically the whole IT student experience.
-        </p>
-
-      </section>
-    </div>
-
-    <!-- ── TECH STACK — parallax background ── -->
-    <div class="parallax-bg2">
-      <div class="parallax-overlay"></div>
-      <div class="max-w-240 mx-auto px-6 sm:px-12 py-24 relative z-10">
-        <section>
+      <!-- OFF THE CLOCK -->
+      <div class="max-w-240 mx-auto px-6 sm:px-12 pt-20 pb-20">
+        <div>
 
           <div class="flex items-center gap-2.5 mb-5">
             <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
-            <p class="text-[11px] text-white/40 tracking-[0.12em] uppercase">Tech Stack</p>
+            <p class="text-[11px] text-white/60 tracking-[0.12em] uppercase">Off The Clock</p>
           </div>
 
-          <h2 class="text-[clamp(22px,3.5vw,40px)] font-semibold leading-[1.15] tracking-[-0.02em] mb-10"
-            style="text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(255,255,255,0.12)">
-            Languages &amp; tools I actually
-            <span class="font-serif italic font-normal text-white/50">work with.</span>
+          <p class="text-xl leading-[1.85] text-white italic max-w-135 border-l border-white/20 pl-5">
+            When I'm not writing code, I'm probably scrolling for tech updates, hanging out with friends on Discord, playing video games, or dancing to music. Basically the whole IT student experience.
+          </p>
+
+        </div>
+      </div>
+
+      <!-- TECH STACK parallax background -->
+      <div class="parallax-bg2">
+        <div class="parallax-overlay"></div>
+        <div class="max-w-240 mx-auto px-6 sm:px-12 py-24 relative z-10">
+          <div>
+
+            <div class="flex items-center gap-2.5 mb-5">
+              <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
+              <p class="text-[11px] text-white/60 tracking-[0.12em] uppercase">Tech Stack</p>
+            </div>
+
+            <h2 class="text-[clamp(22px,3.5vw,40px)] font-semibold leading-[1.15] tracking-[-0.02em] mb-10"
+              style="text-shadow: 0 0 40px rgba(255,255,255,0.3), 0 0 80px rgba(255,255,255,0.12)">
+              Languages &amp; tools I actually
+              <span class="font-serif italic font-normal text-white/70">work with.</span>
+            </h2>
+
+            <div class="carousel-wrapper">
+              <div class="carousel-track">
+
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/java/default.svg" alt="Java icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">Java</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/php/default.svg" alt="PHP icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">PHP</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/csharp/default.svg" alt="C Sharp icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">C#</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/dotnet/default.svg" alt=".NET icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">.NET</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/flutter/default.svg" alt="Flutter icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">Flutter</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/html5/default.svg" alt="HTML icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">HTML</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/css/default.svg" alt="CSS icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">CSS</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/javascript/default.svg" alt="JavaScript icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">JavaScript</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/figma/default.svg" alt="Figma icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">Figma</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mysql/default.svg" alt="MySQL icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">MySQL</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mongodb/default.svg" alt="MongoDB icon" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback">MongoDB</span>
+                </div>
+
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/java/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">Java</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/php/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">PHP</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/csharp/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">C#</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/dotnet/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">.NET</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/flutter/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">Flutter</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/html5/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">HTML</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/css/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">CSS</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/javascript/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">JavaScript</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/figma/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">Figma</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mysql/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">MySQL</span>
+                </div>
+                <div class="tech-logo-item">
+                  <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mongodb/default.svg" alt="" class="tech-logo-img" aria-hidden="true" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                  <span class="tech-logo-fallback" aria-hidden="true">MongoDB</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIGN OFF CONTACT -->
+      <div class="max-w-240 mx-auto px-6 sm:px-12 pb-24 mt-10">
+
+        <div class="mb-20 flex flex-col gap-4">
+          <p class="text-[13px] font-semibold text-white/90">Thanks for stopping by!</p>
+          <p class="signature-text text-5xl font-bold">Radz<span class="text-white/80" aria-hidden="true">♡</span></p>
+        </div>
+
+        <div class="mb-0">
+
+          <div class="flex items-center gap-2.5 mb-5">
+            <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
+            <p class="text-[11px] text-white/60 tracking-[0.12em] uppercase">Get In Touch</p>
+          </div>
+
+          <h2 class="text-[clamp(30px,5vw,58px)] font-semibold leading-[1.08] tracking-tight mb-12"
+            style="text-shadow: 0 0 40px rgba(255,255,255,0.35), 0 0 80px rgba(255,255,255,0.15)">
+            Let's build something
+            <span class="font-serif italic font-normal text-white/70">together.</span>
           </h2>
 
-          <div class="carousel-wrapper">
-            <div class="carousel-track">
+          <div class="grid grid-cols-1 sm:grid-cols-[1fr_200px] gap-12 sm:gap-14 items-start">
 
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/java/default.svg" alt="Java" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">Java</span>
+            <form class="flex flex-col gap-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="flex flex-col gap-2">
+                  <label for="name" class="text-[11px] text-white/60 tracking-[0.06em] uppercase">Name</label>
+                  <input id="name" type="text" placeholder="Your name"
+                    class="w-full bg-white/4 border border-white/20 rounded-[10px] px-3.5 py-2.5 text-[13px] text-white/90 placeholder-white/50 outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-200">
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label for="email" class="text-[11px] text-white/60 tracking-[0.06em] uppercase">Email</label>
+                  <input id="email" type="email" placeholder="your@email.com"
+                    class="w-full bg-white/4 border border-white/20 rounded-[10px] px-3.5 py-2.5 text-[13px] text-white/90 placeholder-white/50 outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-200">
+                </div>
               </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/php/default.svg" alt="PHP" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">PHP</span>
+              <div class="flex flex-col gap-2">
+                <label for="message" class="text-[11px] text-white/60 tracking-[0.06em] uppercase">Message</label>
+                <textarea id="message" placeholder="What's on your mind?" rows="5"
+                  class="w-full bg-white/4 border border-white/20 rounded-[10px] px-3.5 py-2.5 text-[13px] text-white/90 placeholder-white/50 outline-none focus:border-white/40 focus:bg-white/10 transition-all duration-200 resize-none leading-relaxed"></textarea>
               </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/csharp/default.svg" alt="C#" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">C#</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/dotnet/default.svg" alt=".NET" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">.NET</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/flutter/default.svg" alt="Flutter" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">Flutter</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/html5/default.svg" alt="HTML" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">HTML</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/css/default.svg" alt="CSS" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">CSS</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/javascript/default.svg" alt="JavaScript" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">JavaScript</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/figma/default.svg" alt="Figma" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">Figma</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mysql/default.svg" alt="MySQL" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">MySQL</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mongodb/default.svg" alt="MongoDB" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">MongoDB</span>
-              </div>
+              <button type="submit"
+                class="self-start px-7 py-2.5 bg-white/8 border border-white/20 rounded-[10px] text-[13px] text-white/90 backdrop-blur-md cursor-pointer hover:bg-white/14 hover:border-white/30 hover:text-white active:scale-[0.98] transition-all duration-200">
+                Send Message
+              </button>
+            </form>
 
-              <!-- Duplicate set for seamless loop -->
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/java/default.svg" alt="Java" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">Java</span>
+            <div class="flex flex-col gap-5 pt-1">
+              <p class="text-[11px] text-white/60 tracking-[0.06em]">Find me elsewhere.</p>
+              <div class="flex flex-col gap-1.5">
+                <a href="https://github.com/zdarkin" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/15 rounded-lg text-[13px] text-white/70 bg-white/3 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-200">
+                  GitHub <span class="text-[11px]" aria-hidden="true">↗</span>
+                </a>
+                <a href="https://www.linkedin.com/in/radzmer-akalani-803777381" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/15 rounded-lg text-[13px] text-white/70 bg-white/3 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-200">
+                  LinkedIn <span class="text-[11px]" aria-hidden="true">↗</span>
+                </a>
+                <a href="https://www.facebook.com/zdarkin" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/15 rounded-lg text-[13px] text-white/70 bg-white/3 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-200">
+                  Facebook <span class="text-[11px]" aria-hidden="true">↗</span>
+                </a>
+                <a href="./assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/15 rounded-lg text-[13px] text-white/70 bg-white/3 hover:text-white hover:border-white/30 hover:bg-white/10 transition-all duration-200">
+                  Resume <span class="text-[11px]" aria-hidden="true">↗</span>
+                </a>
               </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/php/default.svg" alt="PHP" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">PHP</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/csharp/default.svg" alt="C#" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">C#</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/dotnet/default.svg" alt=".NET" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">.NET</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/flutter/default.svg" alt="Flutter" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">Flutter</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/html5/default.svg" alt="HTML" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">HTML</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/css/default.svg" alt="CSS" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">CSS</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/javascript/default.svg" alt="JavaScript" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">JavaScript</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/figma/default.svg" alt="Figma" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">Figma</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mysql/default.svg" alt="MySQL" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">MySQL</span>
-              </div>
-              <div class="tech-logo-item">
-                <img src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mongodb/default.svg" alt="MongoDB" class="tech-logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'"/>
-                <span class="tech-logo-fallback">MongoDB</span>
-              </div>
-
             </div>
+
           </div>
-        </section>
+        </div>
       </div>
-    </div>
 
-    <!-- ── SIGN-OFF + CONTACT ── -->
-    <div class="max-w-240 mx-auto px-6 sm:px-12 pb-24 mt-10">
+      <footer class="w-full text-center py-6 text-[11px] text-white/60 tracking-[0.06em] cursor-default">
+        © 2025 Radzmer Akalani. All rights reserved.
+      </footer>
 
-      <section class="mb-20 flex flex-col gap-4">
-        <p class="text-[13px] font-semibold text-white/80">Thanks for stopping by!</p>
-        <p class="signature-text">Radz<span class="text-white/60">♡</span></p>
-      </section>
-
-      <section class="mb-0">
-
-        <div class="flex items-center gap-2.5 mb-5">
-          <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
-          <p class="text-[11px] text-white/40 tracking-[0.12em] uppercase">Get In Touch</p>
-        </div>
-
-        <h2 class="text-[clamp(30px,5vw,58px)] font-semibold leading-[1.08] tracking-tight mb-12"
-          style="text-shadow: 0 0 40px rgba(255,255,255,0.35), 0 0 80px rgba(255,255,255,0.15)">
-          Let's build something
-          <span class="font-serif italic font-normal text-white/50">together.</span>
-        </h2>
-
-        <div class="grid grid-cols-1 sm:grid-cols-[1fr_200px] gap-12 sm:gap-14 items-start">
-
-          <div class="flex flex-col gap-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div class="flex flex-col gap-2">
-                <label class="text-[11px] text-white/35 tracking-[0.06em] uppercase">Name</label>
-                <input type="text" placeholder="Your name"
-                  class="w-full bg-white/4 border border-white/9 rounded-[10px] px-3.5 py-2.5 text-[13px] text-white/85 placeholder-white/20 outline-none focus:border-white/25 focus:bg-white/7 transition-all duration-200" />
-              </div>
-              <div class="flex flex-col gap-2">
-                <label class="text-[11px] text-white/35 tracking-[0.06em] uppercase">Email</label>
-                <input type="email" placeholder="your@email.com"
-                  class="w-full bg-white/4 border border-white/9 rounded-[10px] px-3.5 py-2.5 text-[13px] text-white/85 placeholder-white/20 outline-none focus:border-white/25 focus:bg-white/7 transition-all duration-200" />
-              </div>
-            </div>
-            <div class="flex flex-col gap-2">
-              <label class="text-[11px] text-white/35 tracking-[0.06em] uppercase">Message</label>
-              <textarea placeholder="What's on your mind?" rows="5"
-                class="w-full bg-white/4 border border-white/9 rounded-[10px] px-3.5 py-2.5 text-[13px] text-white/85 placeholder-white/20 outline-none focus:border-white/25 focus:bg-white/7 transition-all duration-200 resize-none leading-relaxed"></textarea>
-            </div>
-            <button
-              class="self-start px-7 py-2.5 bg-white/8 border border-white/15 rounded-[10px] text-[13px] text-white/85 backdrop-blur-md cursor-pointer hover:bg-white/14 hover:border-white/28 hover:text-white active:scale-[0.98] transition-all duration-200">
-              Send Message
-            </button>
-          </div>
-
-          <div class="flex flex-col gap-5 pt-1">
-            <p class="text-[11px] text-white/30 tracking-[0.06em]">Find me elsewhere.</p>
-            <div class="flex flex-col gap-1.5">
-              <a href="https://github.com/zdarkin" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/8 rounded-lg text-[13px] text-white/55 bg-white/3 hover:text-white/90 hover:border-white/20 hover:bg-white/7 transition-all duration-200">
-                GitHub <span class="text-[10px]">↗</span>
-              </a>
-              <a href="https://www.linkedin.com/in/radzmer-akalani-803777381" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/8 rounded-lg text-[13px] text-white/55 bg-white/3 hover:text-white/90 hover:border-white/20 hover:bg-white/7 transition-all duration-200">
-                LinkedIn <span class="text-[10px]">↗</span>
-              </a>
-              <a href="https://www.facebook.com/zdarkin" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/8 rounded-lg text-[13px] text-white/55 bg-white/3 hover:text-white/90 hover:border-white/20 hover:bg-white/7 transition-all duration-200">
-                Facebook <span class="text-[10px]">↗</span>
-              </a>
-              <a href="./assets/My Resume.pdf" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between px-4 py-2.5 border border-white/8 rounded-lg text-[13px] text-white/55 bg-white/3 hover:text-white/90 hover:border-white/20 hover:bg-white/7 transition-all duration-200">
-                Resume <span class="text-[10px]">↗</span>
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </section>
-
-    </div>
-
-  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] cursor-default">
-  © 2025 Radzmer Akalani. All rights reserved.
-  </footer>
-
-  </div>
-
+    </section>
+  </main>
 
   <script src="./components/script.js"></script>
 </body>
