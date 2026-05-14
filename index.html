@@ -22,11 +22,11 @@
   </div>
 
   <!-- NAVBAR -->
-  <nav class="fixed top-0 left-0 w-full z-1000 flex items-center justify-between px-6 py-6 sm:px-12">
+  <nav class="fixed top-0 left-0 w-full z-1000 flex items-center justify-between px-6 py-6 sm:px-12 slide-in-up">
 
     <div class="name hidden sm:block">
       <p class="text-white text-xl font-semibold tracking-tight">Radzmer Akalani</p>
-      <p class="text-white/35 text-sm mt-0.5">Software Developer</p>
+      <p class="text-white/35 text-sm mt-0.5">Full Stack Developer</p>
     </div>
 
     <div class="flex flex-col items-center gap-1.5">
@@ -76,9 +76,9 @@
   </nav>
 
   <!-- WORK SECTION -->
-  <div id="section-work" class="opacity-0 hidden">
+  <div id="section-work" class="opacity-0 hidden slide-in-up">
     <div class="flex justify-center px-5 mt-25">
-      <div id="mac-window" class="tv-container rounded-2xl border border-white/10 p-1 tv-frame relative slide-in-up">
+      <div id="mac-window" class="tv-container rounded-2xl border border-white/10 p-1 tv-frame relative">
         <div class="tv-loader" id="tv-loader"></div>
         <div class="success-indicator" id="success-indicator"></div>
         <div class="w-full max-w-4xl border border-white/10 rounded-2xl overflow-hidden"
@@ -111,8 +111,40 @@
         </div>
       </div>
     </div>
+    
+    <!-- PROJECT CARDS -->
+    <div class="max-w-240 mx-auto px-6 sm:px-12 pb-10 mt-10 flex flex-col gap-4">
 
-  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] block visible">
+      <!-- Card 1 -->
+      <a href="https://github.com/zdarkin/Basic-Calculator" class="project-card group">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <p class="text-white text-[17px] font-semibold tracking-tight">Basic Calculator</p>
+            <p class="text-white/40 text-[13px] mt-1">HTU, '26 — A clean, functional calculator supporting basic arithmetic operations with a minimal dark interface.</p>
+          </div>
+          <span class="project-arrow">→</span>
+        </div>
+        <div class="project-preview">
+          <img src="./assets/calculator-preview.png" alt="Basic Calculator" class="w-full h-full object-cover object-top rounded-xl" />
+        </div>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="https://github.com/radz360/AttendanceMonitoringSystem" class="project-card group">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <p class="text-white text-[17px] font-semibold tracking-tight">Attendance Monitoring System</p>
+            <p class="text-white/40 text-[13px] mt-1">HTU, '25 — A web-based system for streamlining student attendance tracking, with event-based records and printable reports.</p>
+          </div>
+          <span class="project-arrow">→</span>
+        </div>
+        <div class="project-preview">
+          <img src="./assets/attendance-preview.png" alt="Attendance Monitoring System" class="w-full h-full object-cover object-top rounded-xl" />
+        </div>
+      </a>
+
+    </div>
+  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] cursor-default">
   © 2025 Radzmer Akalani. All rights reserved.
   </footer>
 
@@ -127,7 +159,7 @@
       <div class="max-w-240 mx-auto px-6 sm:px-12 py-24 relative z-10">
         <section>
 
-          <div class="flex items-center gap-2.5 mb-5">
+          <div class="flex items-center gap-2.5 mb-5 slide-in-left">
             <span class="inline-block w-3.5 h-3.5 rounded-full bg-white shrink-0 section-dot"></span>
             <p class="text-[11px] text-white/40 tracking-[0.12em] uppercase">About Me</p>
           </div>
@@ -375,7 +407,7 @@
 
     </div>
 
-  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] block visible">
+  <footer class="w-full text-center py-6 text-[11px] text-white/20 tracking-[0.06em] cursor-default">
   © 2025 Radzmer Akalani. All rights reserved.
   </footer>
 
